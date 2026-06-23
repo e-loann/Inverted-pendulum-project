@@ -50,9 +50,9 @@ $$
 \end{cases}
 $$
 
-<p align="center">
-  \downarrow <i>Linéarisation</i>
-</p>
+$$
+\text{linéarisation} \quad \Downarrow
+$$
 
 ### Modèle linéarisé
 
