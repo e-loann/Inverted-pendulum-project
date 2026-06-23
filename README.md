@@ -51,7 +51,7 @@ $$
 $$
 
 <p align="center">
-  <i>Linéarisation</i>
+  \downarrow <i>Linéarisation</i>
 </p>
 
 ### Modèle linéarisé
