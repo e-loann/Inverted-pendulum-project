@@ -52,7 +52,7 @@ $$
 
 <p align="center">
   $$
-\text{linéarisation} \quad \Big\downarrow
+\text{linéarisation} \quad \Downarrow
 $$
 </p>
 
