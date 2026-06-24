@@ -1,12 +1,10 @@
 Bonjour, pendant ma deuxième année de prépa aux écoles d'ingénieur, j'ai réalisé dans le cadre de ce qu'on appelle en France le "TIPE" un pendule inversé simple sur chariot. Outre le fait d'avoir réussi mon projet, je vais ici détaillé comment j'ai abordé le sujet et quels points ont également posé problème. 
 
-Note : je n'ai absolument pas la prétention de maîtriser la totalité du sujet car l'essence même du concept de pendule inversé repose sur des théories d'automatisation et d'asservissement très complexes, c'est pourquoi je ne ferai part que de ce j'ai compris et ce qui m'a permis d'aboutir à un pendule inversé fonctionnel. Il se peut également que je puisse être imprécis ou faire des erreurs.
-
-###Présentation du problème : 
+### Présentation du problème : 
 
 Prenez un manche de balai et essayez de le tenir en équilibre sur le bout des doigts, c'est relativement facile mais cela peut s'avérer plus compliqué si l'on modifie des paramètres physiques tel que la longueur de celui-ci par exemple. Et bien le pendule c'est exactement la même chose sauf que l'on va automatiser le système pour stabiliser une tige en équilibre sans l'intervention directe d'un humain.
 
-###Matériel utilisé :
+### Matériel utilisé :
 
 Hardware :
 
@@ -24,7 +22,7 @@ Logiciels :
 -Fritzing (seulement pour l'illustration du schéma électrique)
 
 
-###Conception du système : 
+### Conception du système : 
 
 C'est clairement la partie qui m'a prise le plus de temps. J'ai fait le choix de créer un pendule inversé sur chariot guidée en translation sur rails et non pas avec des roues directement sur le sol pour la simple raison que je n'aurais qu'un seul et non pas deux moteurs à commander. J'ai dégoté des rails de 80cm dans l'établissement où j'étudie et sur mon temps libre, j'ai découpé et poncé deux planches de bois sur laquelle j'ai fixé les deux rails, en faisant attention à laisser un écart suffisant entre les rails pour y placer ensuite un capteur d'une part et le moteur d'autre part. 
 
@@ -39,7 +37,12 @@ Enfin, j'ai imprimé une énième pièce en 3D sur mesure pour maintenir le mote
 
 
 
-Pour l'étude théorique, j'ai établis les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}.  On obtient ces équation non linéaires.
+Pour l'étude théorique, sans masse au bout de la tige, j'ai établis les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}.  
+
+
+<img width="2752" height="1536" alt="png" src="https://github.com/user-attachments/assets/9d6d96fd-84c9-4f49-8371-e14ddc416fbb" />
+
+On obtient ces équations non linéaires .
 
 
 $$
@@ -49,20 +52,69 @@ $$
 \end{cases}
 $$
 
-<p align="center">
-  $$
-\text{On peut linéariser autour de l'angle \theta = 0}
-$$
-</p>
 
-### Modèle linéarisé
+Où : 
+- x est la position du chariot
+- θ est l'angle de la tige par rapport à la verticale
+- g est l'accélération de la pesanteur terrestre
+- M est la masse du chariot 
+- m est la masse de la tige
+- d est le coefficient de frottements visqueux
+- l est la longueur de la tige
+     
+
+On peut linéariser le système autour du point d'équilibre instable ($\theta \simeq 0$) et en négligeant les frottements, ce qui donne le système suivant :
 
 $$
 \begin{cases}
-(M + m)\ddot{x} + \frac{mL}{2}\ddot{\theta} = F \\
+(M + m)\ddot{x} + \frac{mL}{2}\ddot{\theta} = F \\\\
 \frac{L}{3}\ddot{\theta} + \frac{1}{2}\ddot{x} - \frac{g}{2}\theta = 0
 \end{cases}
 $$
+
+### Correcteur LQR
+
+J'ai choisi de commencer par un asservissement avec un correcteur LQR. La dynamique de ce système se caractérise par l'équation d'état classique :
+
+$$
+\dot{X} = AX + BF
+$$
+
+Où :
+* **$F$** représente l'action du moteur (la force appliquée au chariot).
+* **$X$** est le vecteur d'état du système, défini par :
+
+$$
+X = \begin{bmatrix} x \\\\ \dot{x} \\\\ \theta \\\\ \dot{\theta} \end{bmatrix}
+$$
+
+Grâce aux équations différentielles précédentes, on identifie facilement la matrice de dynamique $A$ et la matrice de commande $B$ :
+
+$$
+A = \begin{bmatrix} 
+0 & 1 & 0 & 0 \\\\ 
+0 & 0 & -\frac{3mg}{4M+m} & 0 \\\\ 
+0 & 0 & 0 & 1 \\\\ 
+0 & 0 & \frac{6(M+m)g}{L(4M+m)} & 0 
+\end{bmatrix}
+\quad \text{et} \quad
+B = \begin{bmatrix} 
+0 \\\\ 
+\frac{4}{4M+m} \\\\ 
+0 \\\\ 
+-\frac{6}{L(4M+m)} 
+\end{bmatrix}
+$$
+
+
+
+
+
+
+
+
+
+
 
 
 
