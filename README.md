@@ -2,11 +2,11 @@ Bonjour, pendant ma deuxième année de prépa aux écoles d'ingénieur, j'ai r�
 
 Note : je n'ai absolument pas la prétention de maîtriser la totalité du sujet car l'essence même du concept de pendule inversé repose sur des théories d'automatisation et d'asservissement très complexes, c'est pourquoi je ne ferai part que de ce j'ai compris et ce qui m'a permis d'aboutir à un pendule inversé fonctionnel. Il se peut également que je puisse être imprécis ou faire des erreurs.
 
-##Présentation du problème : 
+###Présentation du problème : 
 
 Prenez un manche de balai et essayez de le tenir en équilibre sur le bout des doigts, c'est relativement facile mais cela peut s'avérer plus compliqué si l'on modifie des paramètres physiques tel que la longueur de celui-ci par exemple. Et bien le pendule c'est exactement la même chose sauf que l'on va automatiser le système pour stabiliser une tige en équilibre sans l'intervention directe d'un humain.
 
-##Matériel utilisé :
+###Matériel utilisé :
 
 Hardware :
 
@@ -24,7 +24,7 @@ Logiciels :
 -Fritzing (seulement pour l'illustration du schéma électrique)
 
 
-##Conception du système : 
+###Conception du système : 
 
 C'est clairement la partie qui m'a prise le plus de temps. J'ai fait le choix de créer un pendule inversé sur chariot guidée en translation sur rails et non pas avec des roues directement sur le sol pour la simple raison que je n'aurais qu'un seul et non pas deux moteurs à commander. J'ai dégoté des rails de 80cm dans l'établissement où j'étudie et sur mon temps libre, j'ai découpé et poncé deux planches de bois sur laquelle j'ai fixé les deux rails, en faisant attention à laisser un écart suffisant entre les rails pour y placer ensuite un capteur d'une part et le moteur d'autre part. 
 
@@ -37,11 +37,10 @@ Puis, j'ai fixé le second encodeur et le moteur de façon à ce qu'avec une cou
 Enfin, j'ai imprimé une énième pièce en 3D sur mesure pour maintenir le moteur en pensant à faire les fixations pour les vis à bois de telle sorte que je puisse les dévisser, décaler la pièce et le moteur puis les revisser de façon à tendre la courroie si elle venait à se détendre (cela m'a simplifié bien des problèmes).
 
 
-##Modélisation théorique du système :
 
-Pour l'étude théorique, j'ai établis les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}.  
 
-### Modèle non-linéaire
+Pour l'étude théorique, j'ai établis les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}.  On obtient ces équation non linéaires.
+
 
 $$
 \begin{cases}
@@ -52,7 +51,7 @@ $$
 
 <p align="center">
   $$
-\text{linéarisation} \quad \Downarrow
+\text{On peut linéariser autour de l'angle \theta = 0}
 $$
 </p>
 
