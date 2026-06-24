@@ -106,6 +106,8 @@ B = \begin{bmatrix}
 \end{bmatrix}
 $$
 
+Il s'agit ensuite 
+
 
 
 
