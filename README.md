@@ -106,7 +106,25 @@ B = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-Il s'agit ensuite 
+On peut faire l'application numérique mais elle n'est pas utile par la suite dans mon cas.
+
+Il s'agit ensuite de déterminer les matrice Q et R qui minimisent la fonction de coût suivante : 
+
+$$
+J = \int_{0}^{\infty} (X^T Q X + u^T R u) dt
+$$
+
+Avec 
+
+$$Q = \begin{bmatrix}
+q_x & 0 & 0 & 0 \\
+0 & q_{\dot{x}} & 0 & 0 \\
+0 & 0 & q_\theta & 0 \\
+0 & 0 & 0 & q_{\dot{\theta}}
+\end{bmatrix}
+$$
+
+La matrice "de coût aux écarts", c'est à dire que chaque coéfficient diagonal sert à pondérer la réactivité du pendule en agissant sur ses différents paramètres (vitesse, vitesse angulaire, potition et angle). Par exemple, pour $$q_θ$$, plus cette valeur sera élevée, plus le système va pénaliser l'écart à la verticale et inversement. Le contrôleur n'hésitera pas à sacrifier la position du chariot (si $q_x$ est plus faible par exemple) pour rattraper la chute du pendule.
 
 
 
