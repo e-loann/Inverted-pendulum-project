@@ -174,6 +174,13 @@ On distingue deux parties du montage. D'abord la partie puissance à droite, com
 
 Attaquons-nous maintenant au coeur du programme de l'arduino ! 
 
+<img width="606" height="190" alt="Capture d&#39;écran 2026-06-09 115642" src="https://github.com/user-attachments/assets/fd1f2b25-21f2-44d8-a318-7b13f09c3c8a" />
+<img width="759" height="497" alt="Capture d&#39;écran 2026-06-09 115621" src="https://github.com/user-attachments/assets/a3baf62c-79f8-4d86-9927-5691919f091a" />
+<img width="785" height="512" alt="Capture d&#39;écran 2026-06-09 115550" src="https://github.com/user-attachments/assets/b4efe550-de35-4b16-a57e-24c7c10ee91e" />
+<img width="788" height="496" alt="Capture d&#39;écran 2026-06-09 115522" src="https://github.com/user-attachments/assets/0cf77602-e349-47ba-a7c4-692c2a2abfa4" />
+<img width="702" height="480" alt="Capture d&#39;écran 2026-06-09 115446" src="https://github.com/user-attachments/assets/edb9f37e-a9f0-4250-9ca9-0e4f75844ba5" />
+<img width="794" height="483" alt="Capture d&#39;écran 2026-06-09 115328" src="https://github.com/user-attachments/assets/0ca7c455-65bc-4772-adca-bd95e3c07bfd" />
+
 
 
 
