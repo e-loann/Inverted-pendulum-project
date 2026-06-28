@@ -35,8 +35,6 @@ Puis, j'ai fixé le second encodeur et le moteur de façon à ce qu'avec une cou
 Enfin, j'ai imprimé une énième pièce en 3D sur mesure pour maintenir le moteur en pensant à faire les fixations pour les vis à bois de telle sorte que je puisse les dévisser, décaler la pièce et le moteur puis les revisser de façon à tendre la courroie si elle venait à se détendre (cela m'a simplifié bien des problèmes).
 
 
-
-
 Pour l'étude théorique, sans masse au bout de la tige, j'ai établis les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}.  
 
 
@@ -139,6 +137,8 @@ $$
 
 pour les coéfficients de la matrice $Q$, ou bien :
 
+
+
 $$
 R = \frac{1}{\text{U}_{\max}^2}
 $$
@@ -158,13 +158,19 @@ X = \begin{bmatrix} x \\\\ \dot{x} \\\\ \theta \\\\ \dot{\theta} \end{bmatrix}
 K = \begin{bmatrix} k1 \\\\ k2 \\\\ k3 \\\\ k4 \end{bmatrix}
 $$
 
-Or, on a vu que $\dot{X} = AX + BF$ pour le système commandé et on a $F = -KX$ donc $\dot{X} = 
+Note : on a vu que $\dot{X} = AX + BF$ pour le système commandé et on a $F = -KX$ donc $\dot{X} = (A-BK)X$ et par le calcul il est possible de montrer que les valeurs propres de la matrice $A-BK$ sont exactement les poles du système, et en déterminant les gains $k1$, $k2$, $k3$ et $k4$, on peut assurer la stabilité du système si la partie réelle de toutes les valeurs propres sont strictement négatives.
 
 
-Pour cela, la théorie suggère de résoudre l'équation de Riccati, or je ne m'y suis pas attardé puisqu'il existe une fonction LQR déjà implémentée dans Matlab. Pour 
+Pour déterminer la matrice de gain K, la théorie suggère de résoudre l'équation de Riccati, or je ne m'y suis pas attardé puisqu'il existe une fonction LQR déjà implémentée dans Matlab. J'ai donc crée un programme Matlab où j'y ai défini toutes les matrices avec la valeur de chaque grandeur physique et ai appelé cette même fonction. Le programme me renvoie alors des valeurs pour $k1$, $k2$, $k3$ et $k4$ qui vont me permettre de rendre le système stable.
 
 
-J'ai donc crée un programme Matlab où j'y ai défini toutes les matrices avec la valeur de chaque grandeur physique et ai appelé cette fonction.
+### Arduino
+
+Après avoir expliqué le fonctionnement du correcteur, je me dois de parler de la partie Arduino. Voici le schéma du montage avec lequel j'ai fait fonctionner mon pendule inversé : 
+
+
+
+
 
 
 
