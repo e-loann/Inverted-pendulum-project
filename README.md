@@ -168,6 +168,7 @@ Pour déterminer la matrice de gain K, la théorie suggère de résoudre l'équa
 
 Après avoir expliqué le fonctionnement du correcteur, je me dois de parler de la partie Arduino. Voici le schéma du montage avec lequel j'ai fait fonctionner mon pendule inversé : 
 
+<img width="732" height="534" alt="Capture d’écran 2026-06-02 154851" src="https://github.com/user-attachments/assets/13ba65d0-6205-4007-8976-682513a074c4" />
 
 
 
