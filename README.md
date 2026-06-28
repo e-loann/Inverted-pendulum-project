@@ -17,9 +17,9 @@ Hardware :
 
 Logiciels :
 
--Arduino (pour la programmation et l'acquisition des données)
--Matlab (calculs/simulations et que j'ai utilisé gratuitement en version étudiante)
--Fritzing (seulement pour l'illustration du schéma électrique)
+- Arduino (pour la programmation et l'acquisition des données)
+- Matlab (calculs/simulations et que j'ai utilisé gratuitement en version étudiante)
+- Fritzing (seulement pour l'illustration du schéma électrique)
 
 
 ### Conception du système : 
@@ -88,6 +88,9 @@ $$
 X = \begin{bmatrix} x \\\\ \dot{x} \\\\ \theta \\\\ \dot{\theta} \end{bmatrix}
 $$
 
+Cette équation représente la physique du système. Sans action du moteur (F=0), on a $\dot{X} = AX$ ou plutôt, $\dot{X} - AX = 0$ qui est une équation différentielle classique en X(t) et qui a pour solution une exponentielle divergente ce qui confirme la nature instable du système sans asservissement.
+
+
 Grâce aux équations différentielles précédentes, on identifie facilement la matrice de dynamique $A$ et la matrice de commande $B$ :
 
 $$
@@ -124,13 +127,44 @@ q_x & 0 & 0 & 0 \\
 \end{bmatrix}
 $$
 
-La matrice "de coût aux écarts", c'est à dire que chaque coéfficient diagonal sert à pondérer la réactivité du pendule en agissant sur ses différents paramètres (vitesse, vitesse angulaire, potition et angle). Par exemple, pour $$q_θ$$, plus cette valeur sera élevée, plus le système va pénaliser l'écart à la verticale et inversement. Le contrôleur n'hésitera pas à sacrifier la position du chariot (si $q_x$ est plus faible par exemple) pour rattraper la chute du pendule.
+La matrice "de coût aux écarts", c'est à dire que chaque coéfficient diagonal sert à pondérer la réactivité du pendule en agissant sur ses différents paramètres (vitesse, vitesse angulaire, potition et angle). Par exemple, pour $q_θ$, plus cette valeur sera élevée, plus le système va pénaliser l'écart à la verticale et inversement. Le contrôleur n'hésitera pas à sacrifier la position du chariot (si $q_x$ est plus faible par exemple) pour rattraper la chute du pendule.
+
+De la même manière, $R$ est une matrice 1x1, et représente de "coût des efforts", c'est à dire de l'énergie que le contrôleur va permettre au moteur de consommer.
+
+Pour trouver ces 5 valeurs, on utilise le critère de Bryson qui est :
+
+$$
+q_i = \frac{1}{\text{Val}_{\max}^2}
+$$
+
+pour les coéfficients de la matrice $Q$, ou bien :
+
+$$
+R = \frac{1}{\text{U}_{\max}^2}
+$$
+
+pour R où Val<sub>max</sub> et U<sub>max</sub> sont les valeurs de position, d'angle, de vitesse, de vitesse de rotation ou de tension que l'on "tolère" ou possède. 
+
+Par exemple si on veut calculer la valeur de $q_θ$, si on tolère un écart max d'environ 3° par rapport à la verticale, c'est à dire, environ 0,05 rad, on aura donc $q_θ = \frac{1}{0.05^2}$ soit $q_θ = 400$. De même, étant donné que la tension maximale que je puisse fournir au moteur avec mon alimentation est de 12V, je vais obtenir $R = \frac{1}{12^2}$ soit R = 0,007.
 
 
+Sachant que notre commande moteur doit s'effectuer par feedback, c'est à dire avec rétroaction, on doit avoir une expression de la commande moteur du type :
+
+$$
+F = -KX
+\quad \text{avec pour rappel} \quad 
+X = \begin{bmatrix} x \\\\ \dot{x} \\\\ \theta \\\\ \dot{\theta} \end{bmatrix}
+\quad \text{et où} \quad 
+K = \begin{bmatrix} k1 \\\\ k2 \\\\ k3 \\\\ k4 \end{bmatrix}
+$$
+
+Or, on a vu que $\dot{X} = AX + BF$ pour le système commandé et on a $F = -KX$ donc $\dot{X} = 
 
 
+Pour cela, la théorie suggère de résoudre l'équation de Riccati, or je ne m'y suis pas attardé puisqu'il existe une fonction LQR déjà implémentée dans Matlab. Pour 
 
 
+J'ai donc crée un programme Matlab où j'y ai défini toutes les matrices avec la valeur de chaque grandeur physique et ai appelé cette fonction.
 
 
 
