@@ -170,6 +170,10 @@ Après avoir expliqué le fonctionnement du correcteur, je me dois de parler de 
 
 <img width="732" height="534" alt="Capture d’écran 2026-06-02 154851" src="https://github.com/user-attachments/assets/13ba65d0-6205-4007-8976-682513a074c4" />
 
+On distingue deux parties du montage. D'abord la partie puissance à droite, composée de l'alimentation, le moteur raccordé au PWM du DVBH12. Et de l'autre coté, la partie commande, composée des deux encodeurs branchés sur les interrupt pins de la Arduino Mega et de la breaboard facilitant le montage. 
+
+Attaquons-nous maintenant au coeur du programme de l'arduino ! 
+
 
 
 
