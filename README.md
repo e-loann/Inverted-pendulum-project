@@ -45,23 +45,25 @@ Ensuite j'ai commandé deux moteurs à courant continu mais en les testant, je m
 <img src="https://github.com/user-attachments/assets/b1e87ef9-e1e8-4889-9f52-5e029a049dfd" alt="Schéma du pendule inversé" width="175">
 <img src="https://github.com/user-attachments/assets/8e20645a-c218-45c0-a7e2-0f9df568ac79" alt="Schéma du pendule inversé" width="175">
 
-
+<br><br>
 
 Je n'ai pas parlé du chariot en lui-même car c'est plutôt simple, j'ai utilisé une planche de bois sur laquelle j'ai fixé 4 supports avec douilles à billes pour permettre une translation sans trop de frottements, et j'y ai de l'autre coté fixé le pendule. Pour ce faire, j'ai fixé un des deux support pour les encodeurs imprimés en 3D et avec une autre pièce imprimé en 3D, fixé la tige filetée à l'encodeur.
+
+<img src="https://github.com/user-attachments/assets/ba5340e5-a8b7-47dc-bea0-502d168c4129" alt="Schéma du pendule inversé" width="175">
+<img src="https://github.com/user-attachments/assets/dbed4927-2906-4401-9c48-fcfe3d598ffb" alt="Schéma du pendule inversé" width="175">
+
+<br><br>
 
 Puis, j'ai fixé le second encodeur et le moteur de façon à ce qu'avec une courroie en caoutchouc, et deux poulies installées sur l'arbre moteur et sur la tige de l'encodeur, celle-ci forme une boucle qui se ferme sur une pièce imprimée en 3D et fixée sous le chariot. 
 
 Enfin, j'ai imprimé une énième pièce en 3D sur mesure pour maintenir le moteur en pensant à faire les fixations pour les vis à bois de telle sorte que je puisse les dévisser, décaler la pièce et le moteur puis les revisser de façon à tendre la courroie si elle venait à se détendre (cela m'a simplifié bien des problèmes).
-<img width="2232" height="3968" alt="IMG_20260119_142557" src="https://github.com/user-attachments/assets/dbed4927-2906-4401-9c48-fcfe3d598ffb" />
-<img width="2232" height="3968" alt="IMG_20251215_134604" src="https://github.com/user-attachments/assets/ba5340e5-a8b7-47dc-bea0-502d168c4129" />
-<img width="2232" height="3968" alt="IMG_20260601_082130" src="https://github.com/user-attachments/assets/06551644-bb44-414b-963f-25c78e6e2f2d" />
 
 
 Pour l'étude théorique, sans masse au bout de la tige, j'ai établi les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}.  
 
 <br>
 
-<img width="2752" height="1536" alt="png" src="https://github.com/user-attachments/assets/9d6d96fd-84c9-4f49-8371-e14ddc416fbb" />
+<img src="https://github.com/user-attachments/assets/06551644-bb44-414b-963f-25c78e6e2f2d" alt="Schéma du pendule inversé" width="175">
 
 <br><br>
 
