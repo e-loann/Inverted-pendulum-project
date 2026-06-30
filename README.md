@@ -66,7 +66,9 @@ Enfin, j'ai imprimé une énième pièce en 3D sur mesure pour maintenir le mote
 
 ### Modélisation du système : 
 
-Pour l'étude théorique, sans masse au bout de la tige, j'ai établi les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}.  
+Pour l'étude théorique, sans masse au bout de la tige, j'ai établi les deux équations de mouvement du système à l'aide de deux PFD, l'un en faisant un théorème de la résultante dynamique sur l'axe x et l'autre avec un théorème du moment dynamique sur l'axe z en isolant d'abord la {tige} seule puis l'ensemble {chariot + tige}. 
+
+<img width="2752" height="1536" alt="v" src="https://github.com/user-attachments/assets/4d7e2572-33ae-4937-9d5c-a9a0ddb0acbb" />
 
 On obtient ces équations non linéaires .
 
@@ -86,7 +88,7 @@ Où :
 - M est la masse du chariot 
 - m est la masse de la tige
 - d est le coefficient de frottements visqueux
-- l est la longueur de la tige
+- L est la longueur de la tige
      
 
 On peut linéariser le système autour du point d'équilibre instable ($\theta \simeq 0$) et en négligeant les frottements, ce qui donne le système suivant :
