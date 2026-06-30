@@ -38,12 +38,12 @@ C'est clairement la partie qui m'a prise le plus de temps. J'ai fait le choix de
 
 Ensuite j'ai commandé deux moteurs à courant continu mais en les testant, je me suis vite rendu compte qu'ils n'auraient pas assez de couple pour ne serait-ce faire bouger le chariot. Le problème est qu'il faut un moteur qui soit réactif et puissant, c'est à dire, trouver le bon compromis entre vitesse de rotation élevée et fort couple et cela sans se ruiner (je dis ça car en cherchant sur le site de Maxon Motor, pour obtenir de la qualité, les prix ne sont rarement en deçà de 100$). Je suis finalement tombé par hasard sur un moteur d'essuis glace de récupération et en le testant, je me suis vite rendu compte qu'il convenait parfaitement car très réactif et énorme couple. Seul problème, pour les moteurs précédents, j'utilisais shield moteur L298N (1A max) qui ne convient pas au moteur d'essuis glace qui demande en moyenne 4A-5A pour fonctionner et peut atteindre des pics à 15A-30A lors des changements brusques de rotation par exemple. J'ai donc remplacé le L298N par le DBH-12, qui encaisse jusqu'à 30A et 12V ce qui est parfait avec mon moteur. 
 
-<img src="https://github.com/user-attachments/assets/7363ac17-a77c-445e-ace4-a5f3465ae55c" alt="Schéma du pendule inversé" width="175">
-<img src="https://github.com/user-attachments/assets/499b6c36-78ae-4d0a-98f3-6b1100c55a4c" alt="Schéma du pendule inversé" width="175">
-<img src="https://github.com/user-attachments/assets/c7caa4e4-8999-40bf-985f-87b5e0e419fc" alt="Schéma du pendule inversé" width="175">
+<img src="https://github.com/user-attachments/assets/7363ac17-a77c-445e-ace4-a5f3465ae55c" alt="Schéma du pendule inversé" width="150">
+<img src="https://github.com/user-attachments/assets/499b6c36-78ae-4d0a-98f3-6b1100c55a4c" alt="Schéma du pendule inversé" width="150">
+<img src="https://github.com/user-attachments/assets/c7caa4e4-8999-40bf-985f-87b5e0e419fc" alt="Schéma du pendule inversé" width="150">
 
-<img src="https://github.com/user-attachments/assets/b1e87ef9-e1e8-4889-9f52-5e029a049dfd" alt="Schéma du pendule inversé" width="175">
-<img src="https://github.com/user-attachments/assets/8e20645a-c218-45c0-a7e2-0f9df568ac79" alt="Schéma du pendule inversé" width="175">
+<img src="https://github.com/user-attachments/assets/b1e87ef9-e1e8-4889-9f52-5e029a049dfd" alt="Schéma du pendule inversé" width="150">
+<img src="https://github.com/user-attachments/assets/8e20645a-c218-45c0-a7e2-0f9df568ac79" alt="Schéma du pendule inversé" width="150">
 
 <br><br>
 
