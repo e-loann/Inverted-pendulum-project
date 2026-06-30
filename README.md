@@ -1,4 +1,4 @@
-Bonjour, pendant ma deuxième année de prépa aux écoles d'ingénieur, j'ai réalisé dans le cadre de ce qu'on appelle en France le "TIPE" un pendule inversé simple sur chariot. Outre le fait d'avoir réussi mon projet, je vais ici détaillé comment j'ai abordé le sujet et quels points ont également posé problème. 
+Bonjour, pendant ma deuxième année de prépa aux écoles d'ingénieur, j'ai réalisé dans le cadre de ce qu'on appelle en CPGE le "TIPE" (Travaux d'Initiative Personnelle Encadrés) un pendule inversé simple sur chariot. Outre le fait d'avoir réussi mon projet, je vais ici détaillé comment j'ai abordé le sujet et quels points ont également posé problème. 
 
 <br>
 
@@ -58,7 +58,6 @@ Puis, j'ai fixé le second encodeur et le moteur de façon à ce qu'avec une cou
 
 <img src="https://github.com/user-attachments/assets/06551644-bb44-414b-963f-25c78e6e2f2d" alt="Schéma du pendule inversé" width="300">
 
-<br><br>
 
 Enfin, j'ai imprimé une énième pièce en 3D sur mesure pour maintenir le moteur en pensant à faire les fixations pour les vis à bois de telle sorte que je puisse les dévisser, décaler la pièce et le moteur puis les revisser de façon à tendre la courroie si elle venait à se détendre (cela m'a simplifié bien des problèmes).
 
@@ -278,12 +277,26 @@ Une fois la valeur PWM finale calculée et lissée, la direction est appliquée 
 
 Enfin la fonction stopMoteur assure un arrêt propre et immédiat du moteur. Elle met les deux pins PWM à zéro simultanément.
 
+<br><br>
 
+### Résultat
 
+Finalement, voici à quoi ressemble la version (presque) finale de mon pendule inversé. Presque puisque sur cette vidéo (réduite pour respecter la taille de fichier imposé par github), le pas de temps était de 10ms, soit 100Hz ce qui avait tendance à faire des à-coups trop violents et saccader, et le pendule chutait au bout d'un quarantaine de secondes  (ce qui est déjà beaucoup), tandis qu'au final, j'ai réduit jusqu'à 5ms et j'ai réussir à le maintenir en équilibre pendant plusieurs minutes. 
 
+https://github.com/user-attachments/assets/96aebc21-05ec-4c13-9056-a57407f35ace
 
+<br><br> 
 
+Je partage aussi quelques données qui peuvent être intérressantes comme la variation de chaque paramètres pendant une quarantaine de secondes de marche du pendule inversé : 
 
+<br> 
+
+Note : j'ai laissé  le pendule inversé fonctionner normalement et ai appliqué un légère perturbation aux alentours de 30 secondes.
+
+<img src="https://github.com/user-attachments/assets/39236670-8493-4cae-9f6a-e5ecf203bd29" alt="Schéma du pendule inversé" width="400">
+<img src="https://github.com/user-attachments/assets/541c9154-ebf3-4e44-b87d-d9ef66563744" alt="Schéma du pendule inversé" width="400">
+<img src="https://github.com/user-attachments/assets/68202e5d-48c0-4b76-bfc3-eea03c570792" alt="Schéma du pendule inversé" width="400">
+<img src="https://github.com/user-attachments/assets/99e6eb9d-9967-4b59-9108-217c088dd710" alt="Schéma du pendule inversé" width="400">
 
 
 
