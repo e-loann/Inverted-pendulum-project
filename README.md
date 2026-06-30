@@ -1,4 +1,10 @@
-Bonjour, pendant ma deuxième année de prépa aux écoles d'ingénieur, j'ai réalisé dans le cadre de ce qu'on appelle en CPGE le "TIPE" (Travaux d'Initiative Personnelle Encadrés) un pendule inversé simple sur chariot. Outre le fait d'avoir réussi mon projet, je vais ici détaillé comment j'ai abordé le sujet et quels points ont également posé problème. 
+$\text{CONCEPTION ET ASSERVISSEMENT D'UN PENDULE INVERSÉ}$
+
+
+
+
+
+Pendant ma deuxième année de prépa aux écoles d'ingénieur, j'ai réalisé dans le cadre de ce qu'on appelle en CPGE le "TIPE" (Travaux d'Initiative Personnelle Encadrés) un pendule inversé simple sur chariot. Outre le fait d'avoir réussi mon projet, je vais ici détailler comment j'ai abordé le sujet et quels points ont également posé problème. 
 
 <br>
 
@@ -14,7 +20,7 @@ Hardware :
 
 - Carte Arduino Mega
 - 2 encodeurs rotatifs (2400CPR)
-- un moteur d'essuie glace Renault (je n'ai pas la référence exacte)
+- un moteur d'essuie-glace Renault (je n'ai pas la référence exacte)
 - 2 poulies GT3 et une courroie, un shield moteur (DBH-12)
 - 2 rails (80cm de longueur)
 - une tige filetée (5 mm de diamètre).
@@ -29,14 +35,14 @@ Logiciels :
 
 ### Conception du système : 
 
-C'est clairement la partie qui m'a prise le plus de temps. J'ai fait le choix de créer un pendule inversé sur chariot guidée en translation sur rails et non pas avec des roues directement sur le sol pour la simple raison que je n'aurais qu'un seul et non pas deux moteurs à commander. J'ai dégoté des rails de 80cm dans l'établissement où j'étudie et sur mon temps libre, j'ai découpé et poncé deux planches de bois sur laquelle j'ai fixé les deux rails, en faisant attention à laisser un écart suffisant entre les rails pour y placer ensuite un capteur d'une part et le moteur d'autre part. 
+C'est clairement la partie qui m'a pris le plus de temps. J'ai fait le choix de créer un pendule inversé sur chariot guidée en translation sur rails et non pas avec des roues directement sur le sol pour la simple raison que je n'aurais qu'un seul et non pas deux moteurs à commander. J'ai dégoté des rails de 80cm dans l'établissement où j'étudie et sur mon temps libre, j'ai découpé et poncé deux planches de bois sur laquelle j'ai fixé les deux rails, en faisant attention à laisser un écart suffisant entre les rails pour y placer ensuite un capteur d'une part et le moteur d'autre part. 
 
 <img src="https://github.com/user-attachments/assets/f7fe861a-a5f0-4215-a903-f2bc917eefb9" alt="Schéma du pendule inversé" width="250">
 <img src="https://github.com/user-attachments/assets/bf612861-9ddd-456d-9dc3-1ee2e3d73e67" alt="Schéma du pendule inversé" width="250">
 
 <br><br>
 
-Ensuite j'ai commandé deux moteurs à courant continu mais en les testant, je me suis vite rendu compte qu'ils n'auraient pas assez de couple pour ne serait-ce faire bouger le chariot. Le problème est qu'il faut un moteur qui soit réactif et puissant, c'est à dire, trouver le bon compromis entre vitesse de rotation élevée et fort couple et cela sans se ruiner (je dis ça car en cherchant sur le site de Maxon Motor, pour obtenir de la qualité, les prix ne sont rarement en deçà de 100$). Je suis finalement tombé par hasard sur un moteur d'essuis glace de récupération et en le testant, je me suis vite rendu compte qu'il convenait parfaitement car très réactif et énorme couple. Seul problème, pour les moteurs précédents, j'utilisais shield moteur L298N (1A max) qui ne convient pas au moteur d'essuis glace qui demande en moyenne 4A-5A pour fonctionner et peut atteindre des pics à 15A-30A lors des changements brusques de rotation par exemple. J'ai donc remplacé le L298N par le DBH-12, qui encaisse jusqu'à 30A et 12V ce qui est parfait avec mon moteur. 
+Ensuite j'ai commandé deux moteurs à courant continu mais en les testant, je me suis vite rendu compte qu'ils n'auraient pas assez de couple pour ne serait-ce faire bouger le chariot. Le problème est qu'il faut un moteur qui soit réactif et puissant, c'est à dire, trouver le bon compromis entre vitesse de rotation élevée et fort couple et cela sans se ruiner (je dis ça car en cherchant sur le site de Maxon Motor, pour obtenir de la qualité, les prix ne sont rarement en deçà de 100$). Je suis finalement tombé par hasard sur un moteur d'essuie-glace de récupération et en le testant, je me suis vite rendu compte qu'il convenait parfaitement car très réactif et énorme couple. Seul problème, pour les moteurs précédents, j'utilisais shield moteur L298N (1A max) qui ne convient pas au moteur d'essuie-glace qui demande en moyenne 4A-5A pour fonctionner et peut atteindre des pics à 15A-30A lors des changements brusques de rotation par exemple. J'ai donc remplacé le L298N par le DBH-12, qui encaisse jusqu'à 30A et 12V ce qui est parfait avec mon moteur. 
 
 <img src="https://github.com/user-attachments/assets/7363ac17-a77c-445e-ace4-a5f3465ae55c" alt="Schéma du pendule inversé" width="150">
 <img src="https://github.com/user-attachments/assets/499b6c36-78ae-4d0a-98f3-6b1100c55a4c" alt="Schéma du pendule inversé" width="150">
@@ -213,7 +219,7 @@ Note : on a vu que $\dot{X} = AX + BF$ pour le système commandé et on a $F = -
 
 <br>
 
-Pour déterminer la matrice de gain K, la théorie suggère de résoudre l'équation de Riccati, or je ne m'y suis pas attardé puisqu'il existe une fonction LQR déjà implémentée dans Matlab. J'ai donc crée un programme Matlab où j'y ai défini toutes les matrices avec la valeur de chaque grandeur physique et ai appelé cette même fonction. Le programme me renvoie alors des valeurs pour $k1$, $k2$, $k3$ et $k4$ qui vont me permettre de rendre le système stable.
+Pour déterminer la matrice de gain K, la théorie suggère de résoudre l'équation de Riccati, or je ne m'y suis pas attardé puisqu'il existe une fonction LQR déjà implémentée dans Matlab. J'ai donc créé un programme Matlab où j'y ai défini toutes les matrices avec la valeur de chaque grandeur physique et ai appelé cette même fonction. Le programme me renvoie alors des valeurs pour $k1$, $k2$, $k3$ et $k4$ qui vont me permettre de rendre le système stable.
 
 <br>
 
@@ -235,7 +241,7 @@ Attaquons-nous maintenant au coeur du programme de l'arduino !
 
 <img width="794" height="483" alt="Capture d&#39;écran 2026-06-09 115328" src="https://github.com/user-attachments/assets/0ca7c455-65bc-4772-adca-bd95e3c07bfd" />
 
-Les premières lignes servent à définir les constantes que nous utiliserons tout au long du programme. De plus on y attribut les pins sur lesquels sont branchés les encodeurs et importe également une bibliotheque (encoder.h) qui sert à lire facilement et avec précision les encodeurs incrémentaux. On retrouve aussi les gains $k1$, $k2$, $k3$ et $k4$ calculés grâce Matlab. Concernant ces gains, ils sont légerement différents de ceux renvoyés par Matlab. Effectivement, ayant négligé les frottements et ayant émis l'hypothèse des petits angles pour rendre linéaire un système d'équations d'un système physique naturellement instable, il est normal que ces valeurs ne conviennent pas du premier coup. Il faut alors judicieusement modifier manuellement les gains de façon à faire varier la stabilité, la rapidité et la précision du pendule. Une quinzaine d'essais suffit à obtenir un pendule inversé qui tient en équilibre pendant plus d'une dizaine de secondes. 
+Les premières lignes servent à définir les constantes que nous utiliserons tout au long du programme. De plus on y attribut les pins sur lesquels sont branchés les encodeurs et importe également une bibliothèque (encoder.h) qui sert à lire facilement et avec précision les encodeurs incrémentaux. On retrouve aussi les gains $k1$, $k2$, $k3$ et $k4$ calculés grâce Matlab. Concernant ces gains, ils sont légerement différents de ceux renvoyés par Matlab. Effectivement, ayant négligé les frottements et ayant émis l'hypothèse des petits angles pour rendre linéaire un système d'équations d'un système physique naturellement instable, il est normal que ces valeurs ne conviennent pas du premier coup. Il faut alors judicieusement modifier manuellement les gains de façon à faire varier la stabilité, la rapidité et la précision du pendule. Une quinzaine d'essais suffit à obtenir un pendule inversé qui tient en équilibre pendant plus d'une dizaine de secondes. 
 
 <br><br>
 
@@ -287,7 +293,7 @@ https://github.com/user-attachments/assets/96aebc21-05ec-4c13-9056-a57407f35ace
 
 <br><br> 
 
-Je partage aussi quelques données qui peuvent être intérressantes comme la variation de chaque paramètres pendant une quarantaine de secondes de marche du pendule inversé : 
+Je partage aussi quelques données qui peuvent être intéressantes comme la variation de chaque paramètres pendant une quarantaine de secondes de marche du pendule inversé : 
 
 <br> 
 
