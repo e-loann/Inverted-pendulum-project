@@ -1,6 +1,7 @@
-$\text{CONCEPTION ET ASSERVISSEMENT D'UN PENDULE INVERSÉ}$
 
+<h1 align="center">Conception et asservissement d'un pendule inversé</h1>
 
+<h1 align="center"><img width="220" height="392" alt="VID_20260519_174952(1)" src="https://github.com/user-attachments/assets/fab20f1a-cbd6-41a8-ae7b-ed00711fe646" /></h1>
 
 
 
